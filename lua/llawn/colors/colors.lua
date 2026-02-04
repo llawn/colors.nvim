@@ -1,6 +1,7 @@
 --- @class Color
 --- @field name string: The name of the color
 --- @field color integer: The color as an integer (e.g., 0xff0000)
+
 --- @type Color[]
 local colors = {
   {name="black", color=0x000000},
@@ -41,7 +42,7 @@ local colors = {
   {name="cinnabar", color=0xe34234},
   {name="inferno", color=0xa91101},
   {name="terracotta clay", color=0xa45a52},
-  {name="coffee bean", color=0x1a1110},
+  {name="licorice", color=0x1a1110},
   {name="soft blush", color=0xffe4e1},
   {name="salmon", color=0xfa8072},
   {name="vibrant coral", color=0xfe6f5e},
@@ -60,7 +61,7 @@ local colors = {
   {name="rich mahogany", color=0x3d0c02},
   {name="fiery terracotta", color=0xe44d2e},
   {name="brandy", color=0x882d17},
-  {name="taupe", color=0x98817b},
+  {name="cinereous", color=0x98817b},
   {name="blazing flame", color=0xff3800},
   {name="burnt peach", color=0xe97451},
   {name="almond silk", color=0xedcdc2},
@@ -87,7 +88,7 @@ local colors = {
   {name="peach fuzz", color=0xfbceb1},
   {name="dark coffee", color=0x3d2b1f},
   {name="pumpkin spice", color=0xff7518},
-  {name="coffee bean", color=0x6f4e37},
+  {name="coffee", color=0x6f4e37},
   {name="powder petal", color=0xf1ddcf},
   {name="seashell", color=0xfff5ee},
   {name="chocolate", color=0xd2691e},
