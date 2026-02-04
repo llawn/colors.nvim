@@ -225,4 +225,20 @@ function M.relative_luminance(r, g, b)
 	return y
 end
 
+--- Calculate contrast ratio between two colors (WCAG)
+--- @param color1_int integer First color as integer
+--- @param color2_int integer Second color as integer
+--- @return number Contrast ratio (1.0 to 21.0+)
+function M.get_contrast_ratio(color1_int, color2_int)
+	local r1, g1, b1 = M.int_to_rgb(color1_int)
+	local r2, g2, b2 = M.int_to_rgb(color2_int)
+	local l1 = M.relative_luminance(r1, g1, b1)
+	local l2 = M.relative_luminance(r2, g2, b2)
+
+	local lighter = math.max(l1, l2)
+	local darker = math.min(l1, l2)
+
+	return (lighter + 0.05) / (darker + 0.05)
+end
+
 return M
