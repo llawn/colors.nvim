@@ -30,7 +30,6 @@ M.defaults = {
 	},
 }
 
--- Current configuration (starts with defaults, merged with user opts)
 M.config = vim.deepcopy(M.defaults)
 
 --- Merge user options with default configuration

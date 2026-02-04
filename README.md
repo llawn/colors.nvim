@@ -15,6 +15,7 @@ Manage colors in Neovim: highlighting, picking, and palette generation.
 Using your favorite plugin manager:
 
 ### Lazy.nvim
+
 ```lua
 {
   'llawn/colors.nvim',
