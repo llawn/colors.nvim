@@ -21,6 +21,10 @@ M.defaults = {
 	-- Key mappings
 	keymaps = {
 		toggle_highlight = "<leader>ct",
+		palette_list = "<leader>cl",
+		palette_stats = "<leader>cs",
+		hex_colors = "<leader>cc",
+		grid_picker = "<leader>cC",
 	},
 
 	-- Autocommand settings
@@ -41,7 +45,36 @@ function M.setup(opts)
 	-- Deep merge user options with defaults
 	M.config = vim.tbl_deep_extend("force", M.defaults, opts)
 
+	-- Set up keymaps if enabled
+	M.setup_keymaps()
+
 	return M.config
+end
+
+--- Set up keymaps based on configuration
+function M.setup_keymaps()
+	local opts = { noremap = true, silent = true }
+	local keymaps = M.config.keymaps
+
+	if keymaps.toggle_highlight then
+		vim.keymap.set("n", keymaps.toggle_highlight, "<cmd>ColorToggle<cr>", opts)
+	end
+
+	if keymaps.palette_list then
+		vim.keymap.set("n", keymaps.palette_list, "<cmd>PaletteList<cr>", opts)
+	end
+
+	if keymaps.palette_stats then
+		vim.keymap.set("n", keymaps.palette_stats, "<cmd>PaletteStats<cr>", opts)
+	end
+
+	if keymaps.hex_colors then
+		vim.keymap.set("n", keymaps.hex_colors, "<cmd>HexColors<cr>", opts)
+	end
+
+	if keymaps.grid_picker then
+		vim.keymap.set("n", keymaps.grid_picker, "<cmd>ColorPick2D<cr>", opts)
+	end
 end
 
 --- Get current configuration value

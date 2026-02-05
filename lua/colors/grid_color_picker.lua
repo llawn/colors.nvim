@@ -3,39 +3,9 @@ local utils = require("colors.colors_utils")
 
 local M = {}
 
---- @class ColorHSL : Color
---- @field h number Hue value
---- @field s number Saturation value
---- @field l number Lightness value
-
 -- =============================================================================
--- LOGIC & DATA PROCESSING
+-- LOGIC
 -- =============================================================================
-
---- Sorts colors by HSL for perceptual grouping
---- @param colors_ Color[] Array of color objects with name and color fields
---- @return ColorHSL[] Sorted array of color objects with HSL values added
-local function get_sorted_color_data(colors_)
-	local sorted = {}
-
-	for _, c in ipairs(colors_) do
-		local r, g, b = utils.int_to_rgb(c.color)
-		local h, s, l = utils.rgb_to_hsl(r, g, b)
-		table.insert(sorted, { color = c.color, name = c.name, h = h, s = s, l = l })
-	end
-
-	table.sort(sorted, function(a, b)
-		if a.h ~= b.h then
-			return a.h < b.h
-		end
-		if a.s ~= b.s then
-			return a.s < b.s
-		end
-		return a.l < b.l
-	end)
-
-	return sorted
-end
 
 --- Calculates the optimal rows and columns for a given number of items
 --- Uses a rectangular layout algorithm to minimize wasted space
@@ -252,7 +222,7 @@ function M.pick_color()
 	}
 
 	-- Prep Data
-	local color_data = get_sorted_color_data(colors)
+	local color_data = utils.get_sorted_color_data(colors)
 	local rows, cols, total_slots = calculate_grid_dimensions(#colors)
 
 	-- Fill Grid (Ensuring table structure matches ColorHSL)
@@ -293,7 +263,5 @@ function M.pick_color()
 	-- Start interactions
 	setup_interactions(buf, win, grid, context, { rows = rows, cols = cols, total_slots = total_slots })
 end
-
-vim.api.nvim_create_user_command("ColorPick2D", M.pick_color, {})
 
 return M

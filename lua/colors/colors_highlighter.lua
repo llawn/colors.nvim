@@ -1,28 +1,11 @@
 --- @brief Simple color highlighter for Neovim
 --- Highlights hex colors with their own background color and inline hints
 
-local colors = require("colors.colors")
 local colors_utils = require("colors.colors_utils")
 local conf = require("colors.conf")
 
 local ns_highlight = vim.api.nvim_create_namespace("color_highlights")
 local ns_virtual = vim.api.nvim_create_namespace("color_virtual")
-
---- finds the best matching color from the list in ./colors.lua
---- @param color_int integer: The color as an integer (e.g., 0xff0000)
---- @return Color|nil best_match: The best matching color
-local function find_best_match(color_int)
-	local best_match = nil
-	local min_dist = math.huge
-	for _, color in ipairs(colors) do
-		local dist = colors_utils.color_distance(color_int, color.color)
-		if dist < min_dist then
-			min_dist = dist
-			best_match = color
-		end
-	end
-	return best_match
-end
 
 --- Sets up a highlight group with the specified foreground and background colors.
 --- @param bufnr integer: The buffer number where the highlight will be applied.
@@ -55,7 +38,7 @@ end
 --- @param start_col integer: The starting column for the hint.
 --- @param color_int integer: The color as an integer (e.g., 0xff0000).
 local function set_hint(bufnr, _ns_virtual, line_idx, start_col, color_int)
-	local best_match = find_best_match(color_int)
+	local best_match = colors_utils.find_best_match(color_int)
 
 	if best_match then
 		local match_hex = colors_utils.int_to_hex(best_match.color)
@@ -168,9 +151,6 @@ function M.toggle()
 end
 
 function M.setup()
-	local toggle_key = conf.get("keymaps.toggle_highlight")
-	vim.keymap.set("n", toggle_key, M.toggle, { silent = true, desc = "Toggle color highlights" })
-
 	local events = conf.get("autocmds.events")
 	local pattern = conf.get("autocmds.pattern")
 

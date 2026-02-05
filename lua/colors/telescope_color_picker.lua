@@ -289,17 +289,17 @@ local function pick_colors_dynamic()
 		:find()
 end
 
--- =============================================================================
--- PLUGIN INITIALIZATION
--- =============================================================================
--- Registers the :HexColors command and exports the color palette as a lookup table.
+local M = {}
 
-vim.api.nvim_create_user_command("HexColors", pick_colors_dynamic, {})
+M.pick_colors_dynamic = pick_colors_dynamic
 
--- Create a lookup table mapping color names to hex values
-local hex_colors = {}
-for _, color in ipairs(colors) do
-	hex_colors[color.name] = colors_utils.int_to_hex(color.color)
+-- Allow users to access the hex map if they want
+M.get_hex_map = function()
+	local hex_colors = {}
+	for _, color in ipairs(colors) do
+		hex_colors[color.name] = colors_utils.int_to_hex(color.color)
+	end
+	return hex_colors
 end
 
-return hex_colors
+return M

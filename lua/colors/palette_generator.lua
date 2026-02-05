@@ -145,6 +145,16 @@ function M.generate_equally(base_color, options)
 	return palette, base_index
 end
 
+--- Get all available color names
+--- @return string[] # Array of color names
+function M.get_color_names()
+	local names = {}
+	for _, color in ipairs(colors) do
+		table.insert(names, color.name)
+	end
+	return names
+end
+
 --- Generate palette using specified method
 --- @param base_color_name string Name of base color from palette
 --- @param method string Generation method ("monochromatic", "analogous", "equally")

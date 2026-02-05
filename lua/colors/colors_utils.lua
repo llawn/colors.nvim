@@ -1,6 +1,8 @@
 --- Color utility functions shared across plugins.
 --- Provides common color conversion and manipulation utilities.
 
+local colors = require("colors.colors")
+
 local M = {}
 
 --- Converts an integer color value to RGB components.
@@ -239,6 +241,52 @@ function M.get_contrast_ratio(color1_int, color2_int)
 	local darker = math.min(l1, l2)
 
 	return (lighter + 0.05) / (darker + 0.05)
+end
+
+--- finds the best matching color from the list
+--- @param color_int integer: The color as an integer (e.g., 0xff0000)
+--- @return Color|nil best_match: The best matching color
+function M.find_best_match(color_int)
+	local best_match = nil
+	local min_dist = math.huge
+	for _, color in ipairs(colors) do
+		local dist = M.color_distance(color_int, color.color)
+		if dist < min_dist then
+			min_dist = dist
+			best_match = color
+		end
+	end
+	return best_match
+end
+
+--- @class ColorHSL : Color
+--- @field h number Hue value
+--- @field s number Saturation value
+--- @field l number Lightness value
+
+--- Sorts colors by HSL for perceptual grouping
+--- @param colors_ Color[] Array of color objects with name and color fields
+--- @return ColorHSL[] Sorted array of color objects with HSL values added
+function M.get_sorted_color_data(colors_)
+	local sorted = {}
+
+	for _, c in ipairs(colors_) do
+		local r, g, b = M.int_to_rgb(c.color)
+		local h, s, l = M.rgb_to_hsl(r, g, b)
+		table.insert(sorted, { color = c.color, name = c.name, h = h, s = s, l = l })
+	end
+
+	table.sort(sorted, function(a, b)
+		if a.h ~= b.h then
+			return a.h < b.h
+		end
+		if a.s ~= b.s then
+			return a.s < b.s
+		end
+		return a.l < b.l
+	end)
+
+	return sorted
 end
 
 return M

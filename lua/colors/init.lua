@@ -4,7 +4,6 @@ local M = {}
 -- Core modules
 local colors = require("colors.colors")
 local palette_manager = require("colors.palette_manager")
-local palette_commands = require("colors.palette_commands")
 local colors_highlighter = require("colors.colors_highlighter")
 local conf = require("colors.conf")
 
@@ -20,11 +19,13 @@ function M.setup(opts)
 	-- Initialize configuration
 	conf.setup(opts)
 
-	-- Set up commands
-	palette_commands.setup()
-
 	-- Set up highlighting
 	colors_highlighter.setup()
+	
+	-- Set up web integration (optional)
+	if opts and opts.web_integration ~= false then
+		require("colors.web_integration").setup()
+	end
 end
 
 return M
