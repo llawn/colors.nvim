@@ -212,7 +212,7 @@ When viewing a palette:
 
 #### Telescope Color Picker
 
-![TelescopeColorPicker]("https://github.com/user-attachments/assets/29249eb5-0001-4315-9dc6-ed62634bb162")
+<img width="1551" height="891" alt="TelescopeColorPicker" src="https://github.com/user-attachments/assets/29249eb5-0001-4315-9dc6-ed62634bb162" />
 
 ```vim
 :HexColors
@@ -221,7 +221,7 @@ When viewing a palette:
 
 #### Grid Color Picker
 
-![GridColorPicker]("https://github.com/user-attachments/assets/1c3227ba-42be-4d71-8775-ae6b14ff4912")
+<img width="1551" height="891" alt="GridColorPicker" src="https://github.com/user-attachments/assets/1c3227ba-42be-4d71-8775-ae6b14ff4912" />
 
 ```vim
 :ColorPick2D
