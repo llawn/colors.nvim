@@ -1,5 +1,10 @@
 # colors.nvim
 
+[![Lua](https://img.shields.io/badge/Lua-blue.svg?style=for-the-badge&logo=lua)](https://www.lua.org/)
+[![Neovim](https://img.shields.io/badge/Neovim-green.svg?style=for-the-badge&logo=neovim)](https://neovim.io/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/llawn/colors.nvim?style=for-the-badge&logo=github)](https://github.com/llawn/colors.nvim)
+
 A Neovim plugin for color management, palette generation, and color highlighting.
 Generate color palettes from 500+ predefined colors, manage palettes, and highlight colors in your code with ease.
 
@@ -15,7 +20,18 @@ Generate color palettes from 500+ predefined colors, manage palettes, and highli
 - 💾 **Persistent Storage**: Palettes saved to file for future sessions
 - 💡 **Completion**: Easy integration with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) plugin.
 
+## Integrations & Compatibility
+
+| Integration | Status | Description |
+|-------------|--------|-------------|
+| ![nvim-cmp](https://img.shields.io/badge/nvim--cmp-✓%20Supported-green?style=flat) | ✅ Supported | Color name completion |
+| ![Telescope](https://img.shields.io/badge/Telescope-✓%20Supported-green?style=flat) | ✅ Supported | Fuzzy color picker |
+| ![Plenary](https://img.shields.io/badge/Plenary-✓%20Required-red?style=flat) | ✅ Required | Core utilities |
+
 ## Installation
+
+[![lazy.nvim](https://img.shields.io/badge/lazy.nvim-Plugin%20Manager-blue?style=flat&logo=neovim)](https://github.com/folke/lazy.nvim)
+[![vim.pack](https://img.shields.io/badge/vim.pack-Native%20Package%20Manager-green?style=flat)](https://neovim.io/doc/user/packages.html)
 
 ### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
@@ -268,4 +284,14 @@ Palettes are stored in Lua format at `vim.fn.stdpath("data") .. "/palettes.lua"`
 
 ## License
 
-[MIT License](LICENSE)
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=flat)](LICENSE)
+
+---
+
+## Show Your Support
+
+[![Made with Lua](https://img.shields.io/badge/Made%20with%20Lua-blue?style=flat&logo=lua)](https://www.lua.org/)
+[![Neovim Plugin](https://img.shields.io/badge/Neovim%20Plugin-green?style=flat&logo=neovim)](https://neovim.io/)
+[![GitHub](https://img.shields.io/badge/GitHub-View%20on%20GitHub-black?style=flat&logo=github)](https://github.com/llawn/colors.nvim)
+
+If you find this plugin helpful, consider giving it a ⭐ on GitHub!
