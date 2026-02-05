@@ -193,6 +193,8 @@ When viewing a palette:
 
 ### Color Highlighting
 
+![Highlight](https://github.com/user-attachments/assets/6c21fd77-db11-4447-8428-12e1fea151d6)
+
 #### Toggle Highlighting
 
 ```vim
@@ -210,12 +212,16 @@ When viewing a palette:
 
 #### Telescope Color Picker
 
+![TelescopeColorPicker]("https://github.com/user-attachments/assets/29249eb5-0001-4315-9dc6-ed62634bb162")
+
 ```vim
 :HexColors
 " or with keymap: <leader>cc
 ```
 
 #### Grid Color Picker
+
+![GridColorPicker]("https://github.com/user-attachments/assets/1c3227ba-42be-4d71-8775-ae6b14ff4912")
 
 ```vim
 :ColorPick2D
